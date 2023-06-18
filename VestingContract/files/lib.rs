@@ -50,4 +50,6 @@ pub struct Vesting {
 pub enum ErrorCode {
     #[msg("Vesting Period is not over yet expired")]
     NotYetExpired,
+    #[msg("Tokens have already been claimed.")]
+    TokensAlreadyClaimed,
 }
