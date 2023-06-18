@@ -40,3 +40,14 @@ pub struct Claim<'info> {
     pub vesting: ProgramAccount<'info, Vesting>,
     pub clock: Sysvar<'info, Clock>,
 }
+
+#[account]
+pub struct Vesting {
+    pub expiry: i64,
+}
+
+#[error]
+pub enum ErrorCode {
+    #[msg("Vesting Period is not over yet expired")]
+    NotYetExpired,
+}
