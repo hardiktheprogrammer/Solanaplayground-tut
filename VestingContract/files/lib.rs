@@ -6,5 +6,5 @@ pub mod Vesting_Contract {
 
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>)
+    pub fn initialize(ctx: Context<Initialize>, expiry: i64) -> Result<()> {}
 }
