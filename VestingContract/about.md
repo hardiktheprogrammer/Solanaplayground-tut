@@ -1,3 +1,7 @@
+## About
+
+A vesting smart contract gradually releases tokens or assets over a specified period. It ensures controlled distribution based on predefined rules and conditions. a vesting smart contract can manage token allocation and incentivize long-term engagement for participants. [ Simple Vesting Smart Contract ](/tutorials/tiny-adventure)
+
 ## What you will learn
 
 - How to build and deploy a Solana Anchor program
