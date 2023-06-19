@@ -11,6 +11,8 @@ pub mod Vesting_Contract {
     pub fn initialize(ctx: Context<Initialize>, expiry: i64) -> Result<()> {
         let vesting = &mut ctx.accounts.vesting;
         vesting.expiry = expiry;
+        vesting.claimed = false;
+        vesting.claimed_data = 0;
         Ok(())
     }
 
@@ -44,6 +46,9 @@ pub struct Claim<'info> {
 #[account]
 pub struct Vesting {
     pub expiry: i64,
+
+    pub claimed: bool,
+    pub claimed_data: u64,
 }
 
 #[error]
