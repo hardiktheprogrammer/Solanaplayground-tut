@@ -1,5 +1,4 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Transfer};
 
 declare_id!("");
 
@@ -18,8 +17,15 @@ pub mod Vesting_Contract {
 
     pub fn claim(ctx: Context<Claim>) -> Result<()> {
         let vesting = &mut ctx.accounts.vesting;
+        if ctx.accounts.clock.unix_timestamp < vesting.expiry {
+            return Err(ErrorCode::NotYetExpired.into());
+        }
+        if vesting.claimed {
+            return Err(ErrorCode::TokensAlreadyClaimed.into());
+        }
+        vesting.claimed = true;
 
-        vesting.expiry = expiry;
+        vesting.claimed_data = ctx.accounts.clock.unix_timestamp;
 
         Ok(())
     }
